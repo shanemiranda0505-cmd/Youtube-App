@@ -1,4 +1,5 @@
 const KeywordArray = [["hey" , 0], ["man",0]];
+let KeywordArrayLenght = KeywordArray.length;
 
 function TitleSpliter()
 {
@@ -8,15 +9,30 @@ function TitleSpliter()
 	let Keyword = NewVideoTitle.split(/\s+/);
 	for(let i = 0; i < Keyword.length; i++)
 	{
-		let matchFound = ture;
-		for(let j = 0; j < KeywordArray.length)
+		let matchArray = [];
+		for(let j = 0; j < KeywordArray.length; j++)
 		{
+			
 			if(Keyword[i] == KeywordArray[j][0])
 			{
-				matchFound = ture
+				matchArray.push("YES");
+			}
+			else
+			{
+				matchArray.push("NO");
 			}
 			
 		}
+		if(matchArray.includes("YES") == true)
+		{
+			
+		}
+		else
+		{
+			KeywordArray.push([Keyword[i] , 0]);
+		}
+		console.log(matchArray)
+		
 		
 	}
 	console.log(KeywordArray)
