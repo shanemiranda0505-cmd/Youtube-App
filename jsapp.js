@@ -60,7 +60,8 @@ function TitleSpliter()
 }
 
 
-//Keyword[i] !== "" && Keyword[i] != KeywordArray[j][0]
+
+//Calculate the upper and lower limits based on KeywordArray size
 function Keywordlimits()
 {
 	let BiggestNum = 0
@@ -75,4 +76,58 @@ function Keywordlimits()
 	}
 	let UpperLimit = BiggestNum * 0.9;
 	let LowerLimit = BiggestNum * 0.4;
+	DisplayingKeywords(UpperLimit , LowerLimit)
+}
+
+//trims the KeywordArray and displays the 
+function DisplayingKeywords( UpperLimit , LowerLimit)
+{
+	let FirstChoice = "";
+	let SecondChoice = "";
+	let ThirdChoice = "";
+	let FirstChoiceNum = -1;
+	let SecondChoiceNum = -1;
+	let ThirdChoiceNum = -1;
+	for(let i = 0; i < KeywordArray.length; i++)
+	{
+		if(
+			KeywordArray[i][1] > FirstChoiceNum &&
+			KeywordArray[i][1] < UpperLimit &&
+			KeywordArray[i][1] >= LowerLimit
+			)
+		{
+			FirstChoiceNum = KeywordArray[i][1];
+			FirstChoice = KeywordArray[i][0];
+		}
+		console.log(FirstChoiceNum)
+	}
+	for(let i = 0; i < KeywordArray.length; i++)
+	{
+		if(
+			KeywordArray[i][1] > SecondChoiceNum &&
+			KeywordArray[i][1] < UpperLimit &&
+			KeywordArray[i][1] >= LowerLimit &&
+			(SecondChoiceNum != FirstChoiceNum || SecondChoice != FirstChoice )
+			)
+		{
+			SecondChoiceNum = KeywordArray[i][1];
+			SecondChoice = KeywordArray[i][0];
+		}
+		console.log(SecondChoiceNum)
+	}
+	for(let i = 0; i < KeywordArray.length; i++)
+	{
+		if(
+			KeywordArray[i][1] > ThirdChoiceNum &&
+			KeywordArray[i][1] < UpperLimit &&
+			KeywordArray[i][1] >= LowerLimit &&
+			(ThirdChoiceNum != FirstChoiceNum || ThirdChoice != FirstChoice ) &&
+			(ThirdChoiceNum != SecondChoiceNum || ThirdChoice != SecondChoice )
+			)
+		{
+			ThirdChoiceNum = KeywordArray[i][1];
+			ThirdChoice = KeywordArray[i][0];
+		}
+		console.log(ThirdChoiceNum)
+	}
 }
