@@ -15,15 +15,19 @@ function TitleSpliter()
 	let Keyword = NewVideoTitle.split(/\s+/);
 	
 	//Checks for new keywords and if they are not in KeywordArray pushes that word as a new array into KeywordArray
-	for(let i = 0; i < Keyword.length; i++)
+	/*for(let i = 0; i < Keyword.length; i++)
 	{
 		let matchArray = [];
 		for(let j = 0; j < KeywordArray.length; j++)
 		{
 			
-			if(Keyword[i] == KeywordArray[j][0])
+			if(Keyword[i] == KeywordArray[j][0] && Keyword[i].length > 4)
 			{
 				matchArray.push("YES");
+			}
+			else if (Keyword[i].length <= 4)
+			{
+				matchArray.push("BAN");
 			}
 			else
 			{
@@ -31,13 +35,47 @@ function TitleSpliter()
 			}
 			
 		}
-		if(matchArray.includes("YES") == true)
+		if(matchArray.includes("YES") == true || matchArray.includes("BAN") == true)
 		{
 			
 		}
 		else
 		{
 			KeywordArray.push([Keyword[i] , 0]);
+		}
+		console.log(matchArray)
+		
+		
+	}
+	console.log(KeywordArray)*/
+	
+	for(let i = 0; i < Keyword.length - 1; i++)
+	{
+		let matchArray = [];
+		for(let j = 0; j < KeywordArray.length; j++)
+		{
+			
+			if(Keyword[i] + " " + Keyword[i + 1] == KeywordArray[j][0] && Keyword[i].length > 4 && Keyword[i + 1].length > 4)
+			{
+				matchArray.push("YES");
+			}
+			else if (Keyword[i].length <= 4 || Keyword[i + 1].length <= 4)
+			{
+				matchArray.push("BAN");
+			}
+			else
+			{
+				matchArray.push("NO");
+			}
+			
+		}
+		if(matchArray.includes("YES") == true || matchArray.includes("BAN") == true)
+		{
+			
+		}
+		else
+		{
+			KeywordArray.push([Keyword[i] + " " +  Keyword[i + 1] , 0]);
 		}
 		console.log(matchArray)
 		
@@ -51,6 +89,17 @@ function TitleSpliter()
 		for(let j = 0; j < Keyword.length; j++)
 		{
 			if(KeywordArray[i][0] == Keyword[j])
+			{
+				KeywordArray[i][1]++;
+			}
+		}
+	}
+	
+	for(let i = 0; i < KeywordArray.length; i++)
+	{
+		for(let j = 0; j < Keyword.length - 1; j++)
+		{
+			if(KeywordArray[i][0] == Keyword[j] + " " + Keyword[j + 1])
 			{
 				KeywordArray[i][1]++;
 			}
