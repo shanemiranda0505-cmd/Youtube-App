@@ -85,36 +85,41 @@ function DisplayingKeywords( UpperLimit , LowerLimit)
 	let FirstChoice = "";
 	let SecondChoice = "";
 	let ThirdChoice = "";
-	let FirstChoiceNum = -1;
-	let SecondChoiceNum = -1;
-	let ThirdChoiceNum = -1;
+	let FirstChoiceNum = 0;
+	let SecondChoiceNum = 0;
+	let ThirdChoiceNum = 0;
 	for(let i = 0; i < KeywordArray.length; i++)
 	{
 		if(
-			KeywordArray[i][1] > FirstChoiceNum &&
-			KeywordArray[i][1] < UpperLimit &&
-			KeywordArray[i][1] >= LowerLimit
+			(KeywordArray[i][1] > FirstChoiceNum) &&
+			(KeywordArray[i][1] < UpperLimit) &&
+			(KeywordArray[i][1] >= LowerLimit)
 			)
 		{
 			FirstChoiceNum = KeywordArray[i][1];
 			FirstChoice = KeywordArray[i][0];
+			console.log("Test 1")
 		}
-		console.log(FirstChoiceNum)
+		console.log("Test 2")
 	}
+	console.log("your first pick has " + FirstChoiceNum)
+	console.log("what you like " + FirstChoice)
 	for(let i = 0; i < KeywordArray.length; i++)
 	{
 		if(
 			KeywordArray[i][1] > SecondChoiceNum &&
 			KeywordArray[i][1] < UpperLimit &&
 			KeywordArray[i][1] >= LowerLimit &&
-			(SecondChoiceNum != FirstChoiceNum || SecondChoice != FirstChoice )
+			SecondChoice != FirstChoice
 			)
 		{
 			SecondChoiceNum = KeywordArray[i][1];
 			SecondChoice = KeywordArray[i][0];
 		}
-		console.log(SecondChoiceNum)
+		
 	}
+	console.log("your Seconnd pick has " + SecondChoiceNum)
+	console.log("what you like second" + SecondChoice)
 	for(let i = 0; i < KeywordArray.length; i++)
 	{
 		if(
@@ -128,6 +133,11 @@ function DisplayingKeywords( UpperLimit , LowerLimit)
 			ThirdChoiceNum = KeywordArray[i][1];
 			ThirdChoice = KeywordArray[i][0];
 		}
-		console.log(ThirdChoiceNum)
+		
 	}
+	console.log("your third pick has " + ThirdChoiceNum)
+	console.log("what you like Third" + ThirdChoice)
+	
+	KeywordArray.sort((a, b) => b[1] - a[1]);
+	console.log("Sorted array is this " + KeywordArray);
 }
