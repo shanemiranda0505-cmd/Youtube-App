@@ -10,7 +10,7 @@ function startkeywords()
 function TitleSpliter()
 {
 	let NewVideoTitle = document.getElementById("VideoTitle").value;
-	NewVideoTitle = NewVideoTitle.replace(/[^A-Za-z0-9\s]/g, "");
+	NewVideoTitle = NewVideoTitle.replace(/[^A-Za-z\s]/g, "");
 	NewVideoTitle = NewVideoTitle.toLowerCase();
 	let Keyword = NewVideoTitle.split(/\s+/);
 	
