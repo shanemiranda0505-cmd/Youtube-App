@@ -1,4 +1,6 @@
-const KeywordArray = [["hey" , 0], ["man",0]];
+const KeywordArray = [["" , 0]];
+const KeywordArraySingle = [["" , 0]];
+const keywordArrayTotal = [];
 let KeywordArrayLenght = KeywordArray.length;
 
 //Adds some words to KeywordArray on start
@@ -15,7 +17,7 @@ function TitleSpliter()
 	let Keyword = NewVideoTitle.split(/\s+/);
 	
 	//Checks for new keywords and if they are not in KeywordArray pushes that word as a new array into KeywordArray
-	/*for(let i = 0; i < Keyword.length; i++)
+	for(let i = 0; i < Keyword.length; i++)
 	{
 		let matchArray = [];
 		for(let j = 0; j < KeywordArray.length; j++)
@@ -41,14 +43,15 @@ function TitleSpliter()
 		}
 		else
 		{
-			KeywordArray.push([Keyword[i] , 0]);
+			KeywordArraySingle.push([Keyword[i] , 0]);
 		}
-		console.log(matchArray)
+		//console.log(matchArray)
 		
 		
 	}
-	console.log(KeywordArray)*/
+	console.log(KeywordArraySingle)
 	
+	//Checks for new keywords and if they are not in KeywordArray pushes that word as a new array into KeywordArray
 	for(let i = 0; i < Keyword.length - 1; i++)
 	{
 		let matchArray = [];
@@ -77,7 +80,7 @@ function TitleSpliter()
 		{
 			KeywordArray.push([Keyword[i] + " " +  Keyword[i + 1] , 0]);
 		}
-		console.log(matchArray)
+		//console.log(matchArray)
 		
 		
 	}
@@ -189,4 +192,17 @@ function DisplayingKeywords( UpperLimit , LowerLimit)
 	
 	KeywordArray.sort((a, b) => b[1] - a[1]);
 	console.log("Sorted array is this " + KeywordArray);
+	RevelentSingleWords()
+}
+
+function RevelentSingleWords()
+{
+	let singleOfDouble = [];
+	for(let i = 0; i < KeywordArray.length; i++)
+	{
+		let singleOfDoubleword = KeywordArray[i][0].split(/\s+/);
+		singleOfDouble.push(singleOfDoubleword);
+		
+	}
+	console.log("single Of Double is " + singleOfDouble);
 }
