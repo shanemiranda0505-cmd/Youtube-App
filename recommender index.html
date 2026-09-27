@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YouTube Video Recommender</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 60px auto;
+    text-align: center;
+  }
+  input {
+    width: 70%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+    margin-left: 6px;
+  }
+  #Output {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 24px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Video Recommender</h1>
+  <p>Type a video title, then add a few more to build up a preference.</p>
+
+  <input type="text" id="VideoTitle" placeholder="e.g. Epic gameplay boss fight">
+  <button onclick="TitleSpliter()">Submit</button>
+  <button onclick="resetKeywords()" style="background:#eee;">Clear</button>
+
+  <div id="Output"></div>
+  <a id="SearchButton" target="_blank" style="display:none; margin-top:12px;">Search this category on YouTube</a>
+
+  <script src="sandy-recommender.js"></script>
+</body>
+</html>
