@@ -13,40 +13,26 @@ KeywordList = KeywordList.replace(/[^A-Za-z\s]/g, "");
 KeywordList = KeywordList.toLowerCase();
 let Keyword = KeywordList.split(/\s+/);
 
-//Checks for new keywords and if they are not in KeywordList pushes that word as a new array into KeywordList
-	for(let i = 0; i < Keyword.length - 1; i++)
-	{
-		let matchArray = [];
-		for(let j = 0; j < KeywordList.length; j++)
-		{
-			
-			if(Keyword[i] + " " + Keyword[i + 1] == KeywordList[j][0] && Keyword[i].length > 4 && Keyword[i + 1].length > 4)
-			{
-				matchArray.push("YES");
-			}
-			else if (Keyword[i].length <= 4 || Keyword[i + 1].length <= 4)
-			{
-				matchArray.push("BAN");
-			}
-			else
-			{
-				matchArray.push("NO");
-			}
-			
-		}
-		if(matchArray.includes("YES") == true || matchArray.includes("BAN") == true)
-		{
-			
-		}
-		else
-		{
-			KeywordArray.push([Keyword[i] + " " +  Keyword[i + 1] , 0]);
-		}
-		//console.log(matchArray)
-		
-		
-	}
-	//console.log(KeywordArray)
+// Create a fast lookup Set of phrases already in KeywordArray
+    let existingPhrases = new Set(KeywordArray.map(item => item[0]));
+
+// 3. Loop through Keyword just ONCE
+    for (let i = 0; i < Keyword.length - 1; i++) {
+        let word1 = Keyword[i];
+        let word2 = Keyword[i + 1];
+
+        // Apply your length filters
+        if (word1.length > 4 && word2.length > 4) {
+            let phrase = word1 + " " + word2;
+
+            // Instantly check if we already have it (no inner loop needed!)
+            if (!existingPhrases.has(phrase)) {
+                existingPhrases.add(phrase); // Add to our tracker so we don't duplicate
+                KeywordArray.push([phrase, 0]);
+            }
+        }
+    }
+	console.log(KeywordArray)
 
 }
 
@@ -175,63 +161,12 @@ function Keywordlimits()
 //trims the KeywordArray and displays the 
 function DisplayingKeywords( UpperLimit , LowerLimit)
 {
-	let FirstChoice = "";
-	let SecondChoice = "";
-	let ThirdChoice = "";
-	let FirstChoiceNum = 0;
-	let SecondChoiceNum = 0;
-	let ThirdChoiceNum = 0;
-	for(let i = 0; i < KeywordArray.length; i++)
-	{
-		if(
-			(KeywordArray[i][1] > FirstChoiceNum) &&
-			(KeywordArray[i][1] < UpperLimit) &&
-			(KeywordArray[i][1] >= LowerLimit)
-			)
-		{
-			FirstChoiceNum = KeywordArray[i][1];
-			FirstChoice = KeywordArray[i][0];
-			console.log("Test 1")
-		}
-		console.log("Test 2")
-	}
-	console.log("your first pick has " + FirstChoiceNum)
-	console.log("what you like " + FirstChoice)
-	for(let i = 0; i < KeywordArray.length; i++)
-	{
-		if(
-			KeywordArray[i][1] > SecondChoiceNum &&
-			KeywordArray[i][1] < UpperLimit &&
-			KeywordArray[i][1] >= LowerLimit &&
-			SecondChoice != FirstChoice
-			)
-		{
-			SecondChoiceNum = KeywordArray[i][1];
-			SecondChoice = KeywordArray[i][0];
-		}
-		
-	}
-	console.log("your Seconnd pick has " + SecondChoiceNum)
-	console.log("what you like second" + SecondChoice)
-	for(let i = 0; i < KeywordArray.length; i++)
-	{
-		if(
-			KeywordArray[i][1] > ThirdChoiceNum &&
-			KeywordArray[i][1] < UpperLimit &&
-			KeywordArray[i][1] >= LowerLimit &&
-			(ThirdChoiceNum != FirstChoiceNum || ThirdChoice != FirstChoice ) &&
-			(ThirdChoiceNum != SecondChoiceNum || ThirdChoice != SecondChoice )
-			)
-		{
-			ThirdChoiceNum = KeywordArray[i][1];
-			ThirdChoice = KeywordArray[i][0];
-		}
-		
-	}
-	console.log("your third pick has " + ThirdChoiceNum)
-	console.log("what you like Third" + ThirdChoice)
+	
 	
 	KeywordArray.sort((a, b) => b[1] - a[1]);
+	console.log("Your most liked topic is " + KeywordArray[0][0]);
+	console.log("your second favorit is  " + KeywordArray[1][0]);
+	console.log("you also like " + KeywordArray[2][0]);
 	console.log("Sorted array is this " + KeywordArray);
 	RevelentSingleWords()
 }
