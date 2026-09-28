@@ -1,7 +1,9 @@
 const KeywordArray = [];
 const KeywordArraySingle = [["" , 0]];
+const KeywordArrayDoubleSplit = [["" , 0]];
 const keywordArrayTotal = [];
 let KeywordArrayLenght = KeywordArray.length;
+let VideoTitleCounter = 0;
 
 //Adds some words to KeywordArray on start
 function startkeywords()
@@ -34,6 +36,18 @@ let Keyword = KeywordList.split(/\s+/);
     }
 	console.log(KeywordArray)
 
+}
+
+function Validation()
+{
+	if(document.getElementById("VideoTitle").value != "")
+	{
+		TitleSpliter();
+	}
+	else
+	{
+		alert("Please Enter a youtube title");
+	}
 }
 
 function TitleSpliter()
@@ -135,6 +149,7 @@ function TitleSpliter()
 			}
 		}
 	}
+	NewVideoTitle = "";
 	Keywordlimits();
 }
 
@@ -151,7 +166,7 @@ function Keywordlimits()
 		{
 			BiggestNum = KeywordArray[i][1]
 		}
-		console.log(BiggestNum)
+		//console.log(BiggestNum)
 	}
 	let UpperLimit = BiggestNum * 0.9;
 	let LowerLimit = BiggestNum * 0.4;
@@ -164,9 +179,19 @@ function DisplayingKeywords( UpperLimit , LowerLimit)
 	
 	
 	KeywordArray.sort((a, b) => b[1] - a[1]);
-	console.log("Your most liked topic is " + KeywordArray[0][0]);
-	console.log("your second favorit is  " + KeywordArray[1][0]);
-	console.log("you also like " + KeywordArray[2][0]);
+	document.getElementById("Response").innerText = "You have submitted " + VideoTitleCounter + "Video titles";
+	if(KeywordArray[0][1] > 0)
+	{
+		document.getElementById("Likes1").innerText = "Your most liked topic is " + KeywordArray[0][0];
+	}
+	if(KeywordArray[1][1] > 0)
+	{
+		document.getElementById("Likes2").innerText = "your second favorite is  " + KeywordArray[1][0];
+	}
+	if(KeywordArray[2][1] > 0)
+	{
+		document.getElementById("Likes3").innerText = "you also like " + KeywordArray[2][0];
+	}
 	console.log("Sorted array is this " + KeywordArray);
 	RevelentSingleWords()
 }
