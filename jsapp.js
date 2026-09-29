@@ -207,7 +207,6 @@ function DisplayingKeywords()
 		document.getElementById("Likes3").innerText = "you also like " + KeywordArray[2][0];
 	}
 	console.log("Sorted array is this " + KeywordArray);
-	RevelentSingleWords()
 }
 
 /*function RevelentSingleWords()
@@ -279,6 +278,9 @@ function DisplayingKeywords()
 function SearchYoutube()
 {
 	
+	let YoutubeSearchlink = "https://www.youtube.com/results?search_query="
+	let ArraytoString = KeywordArray[0][0].split(" ").join("+")
+	window.open(YoutubeSearchlink+ArraytoString , "_blank")
 }
 
 startkeywords()
