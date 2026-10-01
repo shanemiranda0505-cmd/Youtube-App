@@ -26,7 +26,7 @@ let Keyword = KeywordList.split(/\s+/);
 
             // check if the keyword is in SetOfKeywords and add it to SetOfKeywords and KeywordArray
             if (!SetOfKeywords.has(DoubleKeyword)) {
-                SetOfKeywords.add(DoubleKeyword); // Add to our tracker so we don't duplicate
+                SetOfKeywords.add(DoubleKeyword);
                 KeywordArray.push([DoubleKeyword, 0]);
             }
         }
