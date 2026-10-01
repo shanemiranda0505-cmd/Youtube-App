@@ -16,7 +16,7 @@ KeywordList = KeywordList.replace(/[^A-Za-z\s]/g, "");
 KeywordList = KeywordList.toLowerCase();
 let Keyword = KeywordList.split(/\s+/);
 
-// Create a fast lookup Set of phrases already in KeywordArray
+// Create a lookup Set of phrases already in KeywordArray
     let SetOfKeywords = new Set(KeywordArray.map(item => item[0]));
 
 // Loop to add double words to KeywordArray
@@ -162,7 +162,7 @@ function TitleSpliter()
 			}
 		}
 	}
-	NewVideoTitle = "";
+	document.getElementById("VideoTitle").value = "";
 	VideoTitleCounter++;
 	DisplayingKeywords()
 }

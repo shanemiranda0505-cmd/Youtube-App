@@ -19,4 +19,35 @@
     font-size: 18px;
     font-weight: bold;
     min-height: 24px;
-  }
+	}
+	.container
+	{
+		display: flex;
+		background-color: DodgerBlue;
+	}
+	.containerItems
+	{
+		background-color: #f1f1f1;
+		margin: 10px;
+		padding: 2px;
+	}
+	
+	#VideoTitle
+	{
+		flex-grow:4;
+		margin: 10px;
+		padding: 2px;
+	}
+	#submitButton
+	{
+		flex-grow:1;
+		margin: 10px;
+		padding: 2px;
+	}
+	content
+	{
+		display: grid;
+		background-color: #42f5a7;
+		margin: 10px;
+		border-radius  :10px;
+	}
