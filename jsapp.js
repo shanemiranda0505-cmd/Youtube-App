@@ -11,7 +11,7 @@ let KeywordList = "Video Title [Rhythm Heaven Fever] ~ Ringside (Perfect) Bedroc
 function startkeywords()
 {
 	
-
+// Cleans keyword list from unnessary input
 KeywordList = KeywordList.replace(/[^A-Za-z\s]/g, "");
 KeywordList = KeywordList.toLowerCase();
 let Keyword = KeywordList.split(/\s+/);
@@ -103,7 +103,7 @@ function TitleSpliter()
 		
 		
 	}
-	console.log(KeywordArraySingle)
+	//console.log(KeywordArraySingle)
 	
 	//Checks for new keywords and if they are not in KeywordArray pushes that word as a new array into KeywordArray
 	for(let i = 0; i < Keyword.length - 1; i++)
@@ -152,6 +152,7 @@ function TitleSpliter()
 		}
 	}
 	
+	// count the number of time a word has been entered and incremetn the number in KeywordArray
 	for(let i = 0; i < KeywordArray.length; i++)
 	{
 		for(let j = 0; j < Keyword.length - 1; j++)
@@ -167,6 +168,42 @@ function TitleSpliter()
 	DisplayingKeywords()
 }
 
+function DisplayingKeywords()
+{
+	
+	
+	KeywordArray.sort((a, b) => b[1] - a[1]);
+	document.getElementById("Response").innerText = "You have submitted " + VideoTitleCounter + " Video titles";
+	if(KeywordArray[0][1] > 0)
+	{
+		document.getElementById("Likes1").innerText = "Your most liked topic is " + KeywordArray[0][0];
+	}
+	if(KeywordArray[1][1] > 0)
+	{
+		document.getElementById("Likes2").innerText = "your second favorite is  " + KeywordArray[1][0];
+	}
+	if(KeywordArray[2][1] > 0)
+	{
+		document.getElementById("Likes3").innerText = "you also like " + KeywordArray[2][0];
+	}
+	console.log("Sorted array is this " + KeywordArray);
+}
+
+function SearchYoutube()
+{
+	if(KeywordArray[0][1] == 0 )
+	{
+		alert("Please enter a youtube video's title to get started");
+	}
+	else
+	{
+		let YoutubeSearchlink = "https://www.youtube.com/results?search_query="
+		let ArraytoString = KeywordArray[0][0].split(" ").join("+")
+		window.open(YoutubeSearchlink+ArraytoString , "_blank")
+	}
+}
+
+startkeywords()
 
 
 //Calculate the upper and lower limits based on KeywordArray size
@@ -188,26 +225,6 @@ function TitleSpliter()
 }*/
 
 //trims the KeywordArray and displays the 
-function DisplayingKeywords()
-{
-	
-	
-	KeywordArray.sort((a, b) => b[1] - a[1]);
-	document.getElementById("Response").innerText = "You have submitted " + VideoTitleCounter + "Video titles";
-	if(KeywordArray[0][1] > 0)
-	{
-		document.getElementById("Likes1").innerText = "Your most liked topic is " + KeywordArray[0][0];
-	}
-	if(KeywordArray[1][1] > 0)
-	{
-		document.getElementById("Likes2").innerText = "your second favorite is  " + KeywordArray[1][0];
-	}
-	if(KeywordArray[2][1] > 0)
-	{
-		document.getElementById("Likes3").innerText = "you also like " + KeywordArray[2][0];
-	}
-	console.log("Sorted array is this " + KeywordArray);
-}
 
 /*function RevelentSingleWords()
 {
@@ -274,19 +291,3 @@ function DisplayingKeywords()
 	
 	
 }*/
-
-function SearchYoutube()
-{
-	if(KeywordArray[0][1] == 0 )
-	{
-		alert("Please enter a youtube video's title to get started");
-	}
-	else
-	{
-		let YoutubeSearchlink = "https://www.youtube.com/results?search_query="
-		let ArraytoString = KeywordArray[0][0].split(" ").join("+")
-		window.open(YoutubeSearchlink+ArraytoString , "_blank")
-	}
-}
-
-startkeywords()
