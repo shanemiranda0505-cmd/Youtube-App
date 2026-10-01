@@ -277,10 +277,16 @@ function DisplayingKeywords()
 
 function SearchYoutube()
 {
-	
-	let YoutubeSearchlink = "https://www.youtube.com/results?search_query="
-	let ArraytoString = KeywordArray[0][0].split(" ").join("+")
-	window.open(YoutubeSearchlink+ArraytoString , "_blank")
+	if(KeywordArray[0][1] == 0 )
+	{
+		alert("Please enter a youtube video's title to get started");
+	}
+	else
+	{
+		let YoutubeSearchlink = "https://www.youtube.com/results?search_query="
+		let ArraytoString = KeywordArray[0][0].split(" ").join("+")
+		window.open(YoutubeSearchlink+ArraytoString , "_blank")
+	}
 }
 
 startkeywords()

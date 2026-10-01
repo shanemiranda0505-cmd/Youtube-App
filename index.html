@@ -5,17 +5,17 @@
 		<script src="jsapp.js"></script>
 	</head>
 	<body>
+		<h1>Youtube Keyword Extractor</h1>
 		<p> 
 			Have you ever wondered what youtube think of you. <br>
 			What your likes are. Well you can use this app to find just that. <br>
-			All you have to do is input your favorite videos and this app will display your likes. <br>
-			Remember it more accurate with more videos title you add.<br>
+			All you have to do is input your favorite videos and this app will display your likes. <br><br>
+			Remember the videos title you add, The more Accurate the Keyword would be.<br>
 		</p>
 		<form>
-			<label>Enter your youtube title here</label><br>
 			<div class="container">
-			<input type = "text" id="VideoTitle">
-			<input type="button" value="Submit" onclick="Validation()" id="submitButton">
+				<input type = "text" id="VideoTitle" placeholder="Enter your youtube title here">
+				<input type="button" value="Submit" onclick="Validation()" id="submitButton">
 			</div>
 			
 		</form>
@@ -25,6 +25,6 @@
 			<h2 id = "Likes2" ></h2>
 			<h3 id = "Likes3" ></h3>
 		</content>
-		<button onclick="SearchYoutube()">Get recommendation for you</button>
+		<button onclick="SearchYoutube()">Get video recommendation for you</button>
 	</body>
 </html>
